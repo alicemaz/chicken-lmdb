@@ -9,6 +9,6 @@
  (build-dependencies srfi-13 compile-file)
  (maintainer "Ivan Raikov")
  (author "Lambda Native")
- (components (extension lmdb-ht (source "lmdb.scm")
+ (components (extension lmdb-ht (source "lmdb-ht.scm")
                         (custom-build "build.sh")))
  )
