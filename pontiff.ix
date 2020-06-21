@@ -14,7 +14,7 @@
                      "-inline" "-inline-global" "-optimize-leaf-routines"]
          :cc clang
          :ld lld
-         :artifacts [(pontiff:executable :name lmdb :root lmdb)]
+         :artifacts [(pontiff:library :name lmdb :root lmdb)]
          :tests []
          :dependencies []
          :resolver alice
