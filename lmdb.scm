@@ -40,7 +40,7 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 |#
 
-(module lmdb-ht
+(module lmdb
 
         (
          debuglevel
@@ -146,8 +146,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           [#:no-lock "MDB_NOLOCK"]
           [#:no-read-ahead "MDB_NORDAHEAD"])
 
-#>
-
+(foreign-declare #<<EOM
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -344,7 +343,8 @@ int _mdb_stats(struct _mdb *m)
   return s.ms_entries;
 }
 
-<#
+EOM
+)
 
 ;; encode/decode context
 
@@ -517,7 +517,6 @@ END
 
 (define (db-begin s #!key (dbname #f) (flags 0))
   (logger 2 "db-begin ~A ~A ~A~%" s dbname flags)
-  (print "session handler: " (lmdb-session-handler s))
   (lmdb-check-error 'db-begin (c-lmdb-begin (lmdb-session-handler s) dbname flags)))
 
 (define (db-end s)

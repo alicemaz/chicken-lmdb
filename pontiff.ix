@@ -1,0 +1,23 @@
+(pontiff :name lmdb
+         :version {3 4 0}
+         :pontiff-version {0 1 0}
+         :synopsis "Hashtable-like interface to the LMDB key-value database."
+         :authors ["Lambda Native"]
+         :maintainers ["Ivan Raikov"]
+         :license "BSD-3"
+         :repository (pontiff:repository :name lmdb :vcs git :url "https://github.com/alicemaz/chicken-lmdb.git")
+         :category db
+         :tags []
+         :source-dir "."
+         :test-dir ""
+         :csc-flags ["-keyword-style" "suffix" "-specialize" "-local" "-lfa2"
+                     "-inline" "-inline-global" "-optimize-leaf-routines"]
+         :cc clang
+         :ld lld
+         :artifacts [(pontiff:executable :name lmdb :root lmdb)]
+         :tests []
+         :dependencies []
+         :resolver alice
+         :lib-dependencies [lmdb]
+         :egg-dependencies [srfi-69 rabbit]
+         :egg-resolver chicken-install)
