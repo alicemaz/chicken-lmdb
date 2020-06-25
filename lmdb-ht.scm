@@ -146,7 +146,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           [#:no-lock "MDB_NOLOCK"]
           [#:no-read-ahead "MDB_NORDAHEAD"])
 
-(foreign-declare #<<EOM
+#>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -343,8 +344,7 @@ int _mdb_stats(struct _mdb *m)
   return s.ms_entries;
 }
 
-EOM
-)
+<#
 
 ;; encode/decode context
 
